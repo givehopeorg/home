@@ -3,7 +3,7 @@
   <head>
   <link href="css/maps.css" rel="stylesheet">
   </head>
-  
+
   <body>
     <div class="container">
       <div class="options-box">
@@ -132,7 +132,7 @@
 
         // Constructor creates a new map - only center and zoom are required.
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.7413549, lng: -73.9980244},
+          center: {lat: 37.338208, lng: -121.886329},
           zoom: 13,
           styles: styles,
           mapTypeControl: false
@@ -155,16 +155,19 @@
         // These are the real estate listings that will be shown to the user.
         // Normally we'd have these in a database instead.
         var locations = [
-          {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
-          {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
-          {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
-          {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
-          {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
-          {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
+          {title: " CityTeam Ministries - 'Men's' Shelter", location: {lat: 37.364715, lng: -121.895879}},
+          {title: 'Family Supportive Housing ', location: {lat: 37.36622, lng: -121.868398}},
+
+
+
+
+
+
+
         ];
 
         var largeInfowindow = new google.maps.InfoWindow();
-
+         maxWidth: 400
         // Initialize the drawing manager.
         var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.POLYGON,
@@ -178,7 +181,7 @@
         });
 
         // Style the markers a bit. This will be our listing marker icon.
-        var defaultIcon = makeMarkerIcon('0091ff');
+        var defaultIcon = makeMarkerIcon('F44336');
 
         // Create a "highlighted location" marker color for when the user
         // mouses over the marker.
@@ -308,6 +311,27 @@
           infowindow.open(map, marker);
         }
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       // This function will loop through the markers array and display them all.
       function showListings() {
@@ -464,6 +488,7 @@
                 // Create a mini infowindow to open immediately and contain the
                 // distance and duration
                 var infowindow = new google.maps.InfoWindow({
+                	maxWidth: 400,
                   content: durationText + ' away, ' + distanceText +
                     '<div><input type=\"button\" value=\"View Route\" onclick =' +
                     '\"displayDirections(&quot;' + origins[i] + '&quot;);\"></input></div>'
@@ -559,9 +584,10 @@
             scaledSize: new google.maps.Size(25, 25)
           };
           // Create a marker for each place.
+          var image = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
           var marker = new google.maps.Marker({
             map: map,
-            icon: icon,
+            icon: image,
             title: place.name,
             position: place.geometry.location,
             id: place.place_id
@@ -606,6 +632,9 @@
           if (place.formatted_address) {
             innerHTML += '<br>' + place.formatted_address;
           }
+          if (place.formatted_website) {
+            innerHTML += '<br>' + place.formatted_website;
+          }
           if (place.formatted_phone_number) {
             innerHTML += '<br>' + place.formatted_phone_number;
           }
@@ -619,6 +648,7 @@
                 place.opening_hours.weekday_text[5] + '<br>' +
                 place.opening_hours.weekday_text[6];
           }
+
           if (place.photos) {
             innerHTML += '<br><br><img src="' + place.photos[0].getUrl(
                 {maxHeight: 100, maxWidth: 200}) + '">';
@@ -629,9 +659,11 @@
           // Make sure the marker property is cleared if the infowindow is closed.
           infowindow.addListener('closeclick', function() {
             infowindow.marker = null;
+
           });
         }
       });
+
     }
 
     </script>
