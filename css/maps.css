@@ -42,20 +42,12 @@
         left: 362px;
         position: absolute;
         right: 0px;
+        
+          
       }
 
       .options-box {
-        
-
-
-
-
-background: #68EFAD; /* fallback for old browsers */
-
-        
-        
-        
-        
+        background: #7B1FA2; /* fallback for old browsers */
         border: 1px solid #999;
         border-radius: 3px;
         height: 100%;
@@ -66,7 +58,7 @@ background: #68EFAD; /* fallback for old browsers */
       }
 
       #pano {
-        width: 200px;
+        width: 203px;
         height: 200px;
       }
 
